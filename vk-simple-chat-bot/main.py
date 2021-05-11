@@ -190,12 +190,12 @@ class VkBot:
                 city = city[:1].upper() + city[1:]
                 message = f"""
 {city}
-Температура: {weather_data['temp']} C° 🌡
+Температура: {weather_data['temp']}C° 🌡
 Восход: {weather_data['sunrise']} 🌅
 Закат в: {weather_data['sunset']} 🌇
-Давление: {weather_data['pressure']} мм
-Влажность: {weather_data['humidity']} %
-Ветер: {weather_data['wind']}
+Давление: {weather_data['pressure']} мм 🐡
+Влажность: {weather_data['humidity']} % 💧
+Ветер: {weather_data['wind']} 🌪️
 """
             else:
                 message = "Город не найден"
