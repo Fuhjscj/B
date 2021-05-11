@@ -190,12 +190,12 @@ class VkBot:
                 city = city[:1].upper() + city[1:]
                 message = f"""
 {city}
-Температура {weather_data['temp']} 🌡
-Восход {weather_data['sunrise']} 🌅
-Закат {weather_data['sunset']} 🌇
-Давление {weather_data['pressure']} мм
-Влажность {weather_data['humidity']} %
-Ветер {weather_data['wind']} м/c
+Температура: {weather_data['temp']} C° 🌡
+Восход: {weather_data['sunrise']} 🌅
+Закат в: {weather_data['sunset']} 🌇
+Давление: {weather_data['pressure']} мм
+Влажность: {weather_data['humidity']} %
+Ветер: {weather_data['wind']}
 """
             else:
                 message = "Город не найден"
@@ -207,7 +207,7 @@ class VkBot:
         while True:
             try:
                 for event in longpoll.listen():
-                    if event.type == VkBotEventType.MESSAGE_NEW and event.from_chat and event.message.get("text") != "":
+                    if event.type == VkBotEventType.MESSAGE_NEW and event.from_chat and event.message and event.message.get("text") != "":
                         received_message = event.message.get("text").lower()
                         self.chat_id = event.chat_id
                         self.sender_id = event.message.get("from_id")
