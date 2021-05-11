@@ -189,8 +189,8 @@ class VkBot:
             if weather_data:
                 city = city[:1].upper() + city[1:]
                 message = f"""
-{city}
-Температура: {weather_data['temp']}C° 🌡
+Сейчас 🌞Погода в {city} 🗺️🧭:
+Температура: {weather_data['temp']}🌡
 Восход: {weather_data['sunrise']} 🌅
 Закат в: {weather_data['sunset']} 🌇
 Давление: {weather_data['pressure']} мм 🐡
