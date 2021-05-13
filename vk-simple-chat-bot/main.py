@@ -189,7 +189,7 @@ class VkBot:
             if weather_data:
                 city = city[:1].upper() + city[1:]
                 message = f"""
-Сейчас 🌞Погода в {city} 🗺️🧭:
+🌞Погода в Городе {city} 🌌🗺️🧭:
 Температура: {weather_data['temp']}🌡
 Восход: {weather_data['sunrise']} 🌅
 Закат в: {weather_data['sunset']} 🌇
@@ -201,9 +201,6 @@ class VkBot:
                 message = "Город не найден"
 
             self.write_message(message=message)
-
-if message == 'как дела?':
-            blasthack(member_id, 'Хорошо, твои как?') 
 
 
     def listen(self):
