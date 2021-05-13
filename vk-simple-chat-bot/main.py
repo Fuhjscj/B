@@ -202,6 +202,10 @@ class VkBot:
 
             self.write_message(message=message)
 
+if message == 'как дела?':
+            blasthack(member_id, 'Хорошо, твои как?') 
+
+
     def listen(self):
         """Отслеживаем каждое событие в беседе."""
         while True:
