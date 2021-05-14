@@ -158,7 +158,7 @@ class VkBot:
         elif received_message == "аудио":
             audio = get_random_file(MUSIC_DIR)
             self.send_file(
-                file=audio,
+                file=str(music),
                 file_type="audio"
             )
 
