@@ -159,8 +159,8 @@ class VkBot:
         elif received_message == "аудио":
             audio = get_random_file(MUSIC_DIR)
             self.send_file(
-                file=str(music),
-                file_type="audio"
+                file=str(audio),
+                file_type="music"
             )
 
         elif received_message == "док":
@@ -227,13 +227,4 @@ class VkBot:
 if __name__ == "__main__":
     vkbot = VkBot()
     utils = Utils()
-    vkbot.run()
-
-while True:
-    try:
-        bot.polling(none_stop=True)
-
-    except Exception as e:
-        logger.error(e)  # или просто print(e) если у вас логгера нет,
-        # или import traceback; traceback.print_exc() для печати полной инфы
-        time.sleep(15) 
+    vkbot.run() 
