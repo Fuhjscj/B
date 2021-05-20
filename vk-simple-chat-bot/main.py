@@ -84,8 +84,8 @@ class VkBot:
 
     def say_hello(self):
         user_info = vk.users.get(user_id=self.sender_id)[0]
-        username = user_info["first_name"]
-        message = f"Привет, {username}!"
+        username = user_info["first_name"+"last_name"]
+        message = f"Привет 👋👋, {username}!"
         x = random.randint(1, 2)
         if x == 1:
             # Отправляем сообщение в беседу
@@ -141,14 +141,14 @@ class VkBot:
         if received_message == "привет":
             self.say_hello()
 
-        elif received_message == "фото":
+        elif received_message == "хочу пикчу":
             photo = get_random_file(IMG_DIR)
             self.send_file(
                 file=str(photo),
                 file_type="photo"
             )
 
-        elif received_message == "видео":
+        elif received_message == "видосик":
             video = get_random_file(VIDEO_DIR)
             self.send_file(
                 file=str(video),
@@ -180,7 +180,7 @@ class VkBot:
                     message += utils.get_group_name(member_id)
             self.write_message(message)
 
-        elif received_message[:6] == "погода":
+        elif received_message[:6] == "погода в":
             city = received_message[7:].lower().replace(" ", "-")
             weather_data = get_weather(city)
 
