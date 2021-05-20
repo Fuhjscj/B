@@ -228,3 +228,12 @@ if __name__ == "__main__":
     vkbot = VkBot()
     utils = Utils()
     vkbot.run()
+
+while True:
+    try:
+        bot.polling(none_stop=True)
+
+    except Exception as e:
+        logger.error(e)  # или просто print(e) если у вас логгера нет,
+        # или import traceback; traceback.print_exc() для печати полной инфы
+        time.sleep(15) 
