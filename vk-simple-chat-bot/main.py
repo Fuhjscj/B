@@ -86,7 +86,7 @@ class VkBot:
         user_info = vk.users.get(user_id=self.sender_id)[0]
         username = user_info["first_name"]
         usernam = user_info["last_name"]
-        message = f"Привет 👋👋, {username} + {usernam}!"
+        message = f"Привет😊👋👋, {username} {usernam}!"
         x = random.randint(1, 2)
         if x == 1:
             # Отправляем сообщение в беседу
