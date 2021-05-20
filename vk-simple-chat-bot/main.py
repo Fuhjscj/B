@@ -139,7 +139,7 @@ class VkBot:
         self.write_message(attachment=attachment)
 
     def check_message(self, received_message):
-        if received_message == "привет":
+        if received_message == "ку":
             self.say_hello()
 
         elif received_message == "хочу пикчу":
@@ -163,7 +163,7 @@ class VkBot:
                 file_type="audio"
             )
 
-        elif received_message == "документ":
+        elif received_message == "док":
             document = get_random_file(DOC_DIR)
             self.send_file(
                 file=str(document),
