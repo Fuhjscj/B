@@ -86,7 +86,7 @@ class VkBot:
         user_info = vk.users.get(user_id=self.sender_id)[0]
         username = user_info["first_name"]
         usernam = user_info["last_name"]
-        message = f"Привет😊👋👋, {username} {usernam}!"
+        message = f"Привет, {username} {usernam}!"
         x = random.randint(1, 2)
         if x == 1:
             # Отправляем сообщение в беседу
@@ -181,8 +181,8 @@ class VkBot:
                     message += utils.get_group_name(member_id)
             self.write_message(message)
 
-        elif received_message[:6] == "погода в":
-            city = received_message[7:].lower().replace(" ", "-")
+        elif received_message[:8] == "погода в":
+            city = received_message[9:].lower().replace(" ", "-")
             weather_data = get_weather(city)
 
             print(weather_data)
