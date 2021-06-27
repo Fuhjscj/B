@@ -181,8 +181,8 @@ class VkBot:
                     message += utils.get_group_name(member_id)
             self.write_message(message)
 
-        elif received_message[:8] == "погода в":
-            city = received_message[9:].lower().replace(" ", "-")
+        elif received_message[:6] == "погода":
+            city = received_message[7:].lower().replace(" ", "-")
             weather_data = get_weather(city)
 
             print(weather_data)
@@ -190,7 +190,7 @@ class VkBot:
             if weather_data:
                 city = city[:1].upper() + city[1:]
                 message = f"""
-🌞Погода в Городе {city} 🌌🗺️🧭:
+🌞Погода в городе {city} 🌌🗺️🧭:
 Температура: {weather_data['temp']}🌡
 Восход: {weather_data['sunrise']} 🌅
 Закат в: {weather_data['sunset']} 🌇
