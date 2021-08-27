@@ -179,7 +179,7 @@ class VkBot:
 
         elif received_message[:3] == "кто":
             member_id = utils.get_random_member(chat_id=self.chat_id)
-            phrases = ["Я думаю, это ", "Однозначно это ", "Скорее всего, это ", "Это ты", "Звёзды говорят что,это"]
+            phrases = ["Я думаю, это ", "Однозначно это ", "Скорее всего, это ", "Это ты", "Звёзды говорят что,это "]
             message = random.choice(phrases)
             if message != "Это ты":
                 if member_id > 0:
