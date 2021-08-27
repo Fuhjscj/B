@@ -83,7 +83,7 @@ class VkBot:
         )
 
     def say_check(self):
-        message = f"На месте✅"
+        message = f"✅На месте"
         self.write_message(message=message)
 
     def say_hello(self):
@@ -146,7 +146,7 @@ class VkBot:
         if received_message == "ку":
             self.say_hello()
 
-        elif received_message == "хочу пикчу":
+        elif received_message == "хочу":
             photo = get_random_file(IMG_DIR)
             self.send_file(
                 file=str(photo),
@@ -179,7 +179,7 @@ class VkBot:
 
         elif received_message[:3] == "кто":
             member_id = utils.get_random_member(chat_id=self.chat_id)
-            phrases = ["Я думаю, это ", "Однозначно это ", "Скорее всего, это ", "Это ты"]
+            phrases = ["Я думаю, это ", "Однозначно это ", "Скорее всего, это ", "Это ты", "Звёзды говорят что,это"]
             message = random.choice(phrases)
             if message != "Это ты":
                 if member_id > 0:
@@ -197,7 +197,7 @@ class VkBot:
             if weather_data:
                 city = city[:1].upper() + city[1:]
                 message = f"""
-🌞Погода в городе {city} 🌌🗺️🧭:
+🌞Погода в городе {city} на сегодня 🌌🗺️🧭:
 Температура: {weather_data['temp']}🌡
 Восход: {weather_data['sunrise']} 🌅
 Закат в: {weather_data['sunset']} 🌇
