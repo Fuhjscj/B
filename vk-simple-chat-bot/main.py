@@ -82,6 +82,10 @@ class VkBot:
             random_id=get_random_id()
         )
 
+    def say_check(self):
+        message = f"На месте✅"
+        self.write_message(message=message)
+
     def say_hello(self):
         user_info = vk.users.get(user_id=self.sender_id)[0]
         username = user_info["first_name"]
@@ -162,7 +166,10 @@ class VkBot:
                 file=str(audio),
                 file_type="music"
             )
-
+           
+        elif received_message == "бот":
+          self.say_check() 
+        
         elif received_message == "док":
             document = get_random_file(DOC_DIR)
             self.send_file(
