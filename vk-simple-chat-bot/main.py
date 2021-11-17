@@ -193,7 +193,7 @@ class VkBot:
                 file_type="doc"
             )
 
-        elif received_message[:3] == ".н кто":
+        elif received_message[:6] == ".н кто":
             member_id = utils.get_random_member(chat_id=self.chat_id)
             phrases = ["Я думаю, это ", "Однозначно это ", "Скорее всего, это ", "Это ты", "Звёзды говорят что,это "]
             message = random.choice(phrases)
@@ -205,7 +205,7 @@ class VkBot:
             self.write_message(message)
 
         elif received_message[:9] == ".н погода":
-            city = received_message[7:].lower().replace(" ", "-")
+            city = received_message[10:].lower().replace(" ", "-")
             weather_data = get_weather(city)
 
             print(weather_data)
