@@ -85,18 +85,31 @@ class VkBot:
     def say_check(self):
         message = f"✅На месте"
         self.write_message(message=message)
-
+        
+        def say_commands(self):
+        message = f"""
+Мои команды:
+В начале каждой(кроме "ку") команды ставится префикс (".н").
+ку-Приветствие(голососое или писменое).
+пикча-Выдаёт рандомную картинку из архива.
+видосик-Выдаёт рандомное видио из архива.
+бот-Проверка бота на работоспособность.
+кто-Выбирает рандомного человека.
+погода-погода в данном городе.
+команды-Список команд для юзеров."""
+        self.write_message(message=message)
+        
     def say_hello(self):
         user_info = vk.users.get(user_id=self.sender_id)[0]
         username = user_info["first_name"]
         usernam = user_info["last_name"]
-        message = f"Привет, {username} {usernam}!"
+        message = f""Здравствуйте, {username} {usernam}. Очень рады вас приветствовать!"
         x = random.randint(1, 2)
-        if x == 1:
+        if x == 0:
             # Отправляем сообщение в беседу
             self.write_message(message=message)
         else:
-            # Отправляем голосовое сообщение в беседу
+           # Отправляем голосовое сообщение в беседу
             tts = gTTS(text=message, lang="ru", lang_check=True)
             file_path = BASE_DIR.joinpath("audio.mp3")
             tts.save(file_path)
@@ -146,38 +159,41 @@ class VkBot:
         if received_message == "ку":
             self.say_hello()
 
-        elif received_message == "хочу":
+        elif received_message == ".н пикча":
             photo = get_random_file(IMG_DIR)
             self.send_file(
                 file=str(photo),
                 file_type="photo"
             )
 
-        elif received_message == "видосик":
+        elif received_message == ".н видосик":
             video = get_random_file(VIDEO_DIR)
             self.send_file(
                 file=str(video),
                 file_type="video"
             )
 
-        elif received_message == "аудио":
+        elif received_message == ".н аудио":
             audio = get_random_file(MUSIC_DIR)
             self.send_file(
                 file=str(audio),
                 file_type="music"
             )
            
-        elif received_message == "бот":
-          self.say_check() 
+        elif received_message == ".н бот":
+          self.say_check()
         
-        elif received_message == "док":
+        elif received_message == ".н команды":
+         self.say_commands()
+        
+        elif received_message ==  ".н док":
             document = get_random_file(DOC_DIR)
             self.send_file(
                 file=str(document),
                 file_type="doc"
             )
 
-        elif received_message[:3] == "кто":
+        elif received_message[:3] == ".н кто":
             member_id = utils.get_random_member(chat_id=self.chat_id)
             phrases = ["Я думаю, это ", "Однозначно это ", "Скорее всего, это ", "Это ты", "Звёзды говорят что,это "]
             message = random.choice(phrases)
@@ -188,7 +204,7 @@ class VkBot:
                     message += utils.get_group_name(member_id)
             self.write_message(message)
 
-        elif received_message[:6] == "погода":
+        elif received_message[:9] == ".н погода":
             city = received_message[7:].lower().replace(" ", "-")
             weather_data = get_weather(city)
 
@@ -206,7 +222,7 @@ class VkBot:
 Ветер: {weather_data['wind']} 🌪️
 """
             else:
-                message = "Город не найден"
+                message = "Блядь, Напиши город в ИМЕНИТЕЛЬНОМ ПАДЕЖЕ"
 
             self.write_message(message=message)
 
