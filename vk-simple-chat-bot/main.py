@@ -48,6 +48,10 @@ vk_upload = VkUpload(vk_session)
 
 logging.info("Авторизация прошла успешно")
 
+global deita
+delta = round(time.time() - message.date, 2)
+    if delta < 0:
+        delta = "777"
 
 class Utils:
     def get_random_member(self, chat_id):
@@ -84,14 +88,17 @@ class VkBot:
 	
     def say_check(self):
         message = f"✅На месте"
+	Ping: {delta}
         self.write_message(message=message)
-       
+         
+		
     def say_ferm(self):
         global x
         x = random.randint(1,50)
         global y
         y =  x
         message = f"✅ Зачёт +{y} 🍬  капнуло на счёт"
+	Ping: {delta} 
         self.write_message(message=message)    
     
     def say_info(self):
@@ -103,7 +110,9 @@ class VkBot:
         balans = balans + y
         message = f"""
 👤 Пользователь {username} {usernam}
-💰 Баланс: {balans} 🍬"""
+💰 Баланс: {balans} 🍬
+Ping: {delta}"""
+	
         self.write_message(message=message)
                         
     def say_commands(self):
@@ -116,7 +125,9 @@ class VkBot:
 проверка-Проверка бота на работоспособность.
 кто-Выбирает рандомного человека.
 погода-погода в данном городе.
-бот команды-Список команд для юзеров."""
+бот команды-Список команд для юзеров.
+
+Ping: {delta}"""
         self.write_message(message=message)
         
     def say_hello(self):
@@ -246,6 +257,8 @@ class VkBot:
 Давление: {weather_data['pressure']} мм 🐡
 Влажность: {weather_data['humidity']} % 💧
 Ветер: {weather_data['wind']} 🌪️
+
+Ping: {delta}
 """
             else:
                 message = "Блядь, Напиши город в ИМЕНИТЕЛЬНОМ ПАДЕЖЕ"
